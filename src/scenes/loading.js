@@ -9,6 +9,7 @@ import back_corridor_3 from "../assets/rooms/corridor/corridor_back_3.jpg";
 
 import back_bedroom from "../assets/rooms/bedroom_back.jpg";
 import back_bathroom from "../assets/rooms/bathroom_back.jpg";
+import back_livingroom from "../assets/rooms/livingroom_back.jpg"
 
 let Game;
 
@@ -32,6 +33,7 @@ export class LoadingScene extends Phaser.Scene {
 
         this.load.image('bedroom_back', back_bedroom);
         this.load.image('bathroom_back', back_bathroom);
+        this.load.image('livingroon_back', back_livingroom);
 
         this.load.audio('snd_click', '../../src/assets/sounds/click.ogg');
         this.load.audio('snd_menu_loop', '../../src/assets/sounds/menu_loop.mp3');

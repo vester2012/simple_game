@@ -58,9 +58,7 @@ export class DebugScene extends Phaser.Scene {
         me.buttons.push(me.bathroomBtn);
 
         me.debugContainer.add(me.livingroomBtn = new Button(me, 0, 0, 'button_menu', null, () => {
-            me.livingroomBtn.onDownResize(() => {
-
-            });
+            me.livingroomBtn.onDownResize(() => this.scene.start('livingroom'));
         }, me));
         me.livingroomBtn.addLabel(0, 0, 'living room');
         me.buttons.push(me.livingroomBtn);

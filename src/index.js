@@ -9,6 +9,7 @@ import {Corridor3Scene} from "./scenes/rooms/corridor_3";
 
 import {BedroomScene} from "./scenes/rooms/bedroom";
 import {BathRoomScene} from "./scenes/rooms/bathroom"
+import {LivingRoomScene} from "./scenes/rooms/livingRoom";
 
 
 import ScreenManager from "./scrmng"
@@ -28,7 +29,8 @@ const config = {
         Corridor2Scene,
         Corridor3Scene,
         BedroomScene,
-        BathRoomScene
+        BathRoomScene,
+        LivingRoomScene
     ]
 };
 
