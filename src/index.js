@@ -3,16 +3,19 @@ import {LoadingScene} from "./scenes/loading";
 import {MenuScene} from "./scenes/menu";
 import {DebugScene} from "./scenes/debug";
 
-import {Corridor1Scene} from "./scenes/rooms/corridor_1";
-import {Corridor2Scene} from "./scenes/rooms/corridor_2";
-import {Corridor3Scene} from "./scenes/rooms/corridor_3";
+import {Corridor1Scene} from "./scenes/rooms/corridor_1_room";
+import {Corridor2Scene} from "./scenes/rooms/corridor_2_room";
+import {Corridor3Scene} from "./scenes/rooms/corridor_3_room";
 
-import {BedroomScene} from "./scenes/rooms/bedroom";
-import {BathRoomScene} from "./scenes/rooms/bathroom"
-import {LivingRoomScene} from "./scenes/rooms/livingRoom";
-
+import {BedroomScene} from "./scenes/rooms/bed_room";
+import {BathRoomScene} from "./scenes/rooms/bath_room"
+import {LivingRoomScene} from "./scenes/rooms/living_room";
+import {ToiletRoomScene} from "./scenes/rooms/toilet_room";
 
 import ScreenManager from "./scrmng"
+import {WardrobeScene} from "./scenes/rooms/wardrobe_room";
+import {ChildrenScene} from "./scenes/rooms/children_room";
+
 
 let scrmng= new ScreenManager();
 
@@ -30,7 +33,10 @@ const config = {
         Corridor3Scene,
         BedroomScene,
         BathRoomScene,
-        LivingRoomScene
+        LivingRoomScene,
+        ToiletRoomScene,
+        WardrobeScene,
+        ChildrenScene
     ]
 };
 

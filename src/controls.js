@@ -16,7 +16,7 @@ export class Button extends Phaser.GameObjects.Container {
     }
 
     setAction(cb, cbContext) {
-        this.image.on('pointerdown', cb, cbContext);
+        this.image.on('pointerdown', () => this.onDownResize(cb), cbContext);
     }
 
     onDownResize(cb) {

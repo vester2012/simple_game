@@ -20,8 +20,6 @@ export class MenuScene extends Phaser.Scene {
         console.log(this.cameras.main);
         console.log(window);
         console.log(isPortrait);
-
-        //this.back.setTexture(isPortrait ? 'menu_back_portrait' : 'menu_back_landscape');
     }
 
     create() {
@@ -34,30 +32,19 @@ export class MenuScene extends Phaser.Scene {
 
         me.buttons = [];
 
-        me.menuContainer.add(me.startBtn = new Button(me, 100, 0, 'button_menu', null, () => {
-            me.startBtn.onDownResize(() => me.gameTransition());
-        }, me));
+        me.menuContainer.add(me.startBtn = new Button(me, 100, 0, 'button_menu', null, () => me.gameTransition(), me));
         me.startBtn.addLabel(0, 0, 'Start Game');
         me.buttons.push(me.startBtn);
 
-        me.menuContainer.add(me.settingsBtn = new Button(me, 100, 70 + 20, 'button_menu', null, () => {
-            me.settingsBtn.onDownResize(() => me.scene.start('debug'));
-            console.log('settings');
-        }, me));
+        me.menuContainer.add(me.settingsBtn = new Button(me, 100, 70 + 20, 'button_menu', null, () => me.scene.start('debug'), me));
         me.settingsBtn.addLabel(0, 0, 'Settings');
         me.buttons.push(me.settingsBtn);
 
-        me.menuContainer.add(me.achievementsBtn = new Button(me, 100, 140 + 40, 'button_menu', null, () => {
-            me.achievementsBtn.onDownResize(() => {});
-            console.log('achievements');
-        }, me));
+        me.menuContainer.add(me.achievementsBtn = new Button(me, 100, 140 + 40, 'button_menu', null, () => {}, me));
         me.achievementsBtn.addLabel(0, 0, 'Achievements');
         me.buttons.push(me.achievementsBtn);
 
-        me.menuContainer.add(me.aboutBtn = new Button(me, 100, 210 + 60, 'button_menu', null, () => {
-            me.aboutBtn.onDownResize(() => {});
-            console.log('about');
-        }, me));
+        me.menuContainer.add(me.aboutBtn = new Button(me, 100, 210 + 60, 'button_menu', null, () => {}, me));
         me.aboutBtn.addLabel(0, 0, 'About');
         me.buttons.push(me.aboutBtn);
     }
@@ -72,7 +59,6 @@ export class MenuScene extends Phaser.Scene {
 
         camera.pan(scrmng.getCenterX() - 80, scrmng.getCenterY() + 80, 500);
         camera.zoomTo(10, 500);
-        camera.fadeEffect()
 
     }
 }
