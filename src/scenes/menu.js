@@ -54,11 +54,13 @@ export class MenuScene extends Phaser.Scene {
 
         // hideButtons
         me.buttons.forEach((button) => {
-            me.tweens.add({targets: button, scale: 0, alpha: 0, duration: 100});
+            me.tweens.add({targets: button, scale: 0, alpha: 0, duration: 100, onComplete: () => button.setVisible(false) });
         });
 
-        camera.pan(scrmng.getCenterX() - 80, scrmng.getCenterY() + 80, 500);
-        camera.zoomTo(10, 500);
+        camera.pan(scrmng.getCenterX() - 80, scrmng.getCenterY() + 80, 1000);
+        camera.zoomTo(10, 1000);
+        camera.fadeOut(1000, 0, 0, 0);
 
+        me.time.delayedCall(1100, () => me.scene.start('bedroom'));
     }
 }

@@ -55,9 +55,9 @@ export class DebugScene extends Phaser.Scene {
         me.clildrenBtn.addLabel(0, 0, 'children room');
         me.buttons.push(me.clildrenBtn);
 
-        me.debugContainer.add(me.terraceBtn = new Button(me, 0, 0, 'button_menu', null, () => {}, me));
-        me.terraceBtn.addLabel(0, 0, 'terrace');
-        me.buttons.push(me.terraceBtn);
+        me.debugContainer.add(me.writerBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('writersroom'), me));
+        me.writerBtn.addLabel(0, 0, 'writers room');
+        me.buttons.push(me.writerBtn);
 
         me.buttons.forEach((button, id) => {
             if (id < 5) {
