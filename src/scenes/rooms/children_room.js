@@ -14,9 +14,6 @@ export class ChildrenScene extends Phaser.Scene {
 
         me.roomContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
         me.roomContainer.add(me.back = me.add.image(0, 0, 'children_back').setScale(0.5));
-
-        me.roomContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => {
-            me.exitBtn.onDownResize(() => this.scene.start('debug'));
-        }, me));
+        me.roomContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('debug'), me));
     }
 }

@@ -35,7 +35,7 @@ export class Dialogs_Manager extends Phaser.GameObjects.Container {
     }
 
     hidePrevDialogs() {
-        if (this.prevDialog) this.scene.tweens.add({ targets: this.prevDialog, alpha: 0, y: - 50, duration: 300 });
+        if (this.prevDialog) this.scene.tweens.add({ targets: this.prevDialog, alpha: 0, y: - 100, duration: 500 });
     }
 
     isNextDialog() {
