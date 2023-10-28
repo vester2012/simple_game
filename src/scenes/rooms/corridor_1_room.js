@@ -12,6 +12,9 @@ export class Corridor1Scene extends Phaser.Scene {
     create () {
         let me = this;
 
+        me.cameras.main.fade(0, 0, 0, 0, true);
+        me.cameras.main.fadeIn(1000);
+
         me.roomContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
         me.roomContainer.add(me.back = me.add.image(0, 0, 'corridor_back_1').setScale(0.5));
 

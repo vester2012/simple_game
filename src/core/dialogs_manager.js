@@ -22,8 +22,8 @@ export class Dialogs_Manager extends Phaser.GameObjects.Container {
 
         group.setAlpha(0);
 
-        group.add(group.name = this.scene.add.text(0, 0, dialog.name));
-        group.add(group.text = this.scene.add.text(0, 20, dialog.text));
+        group.add(group.name = this.scene.add.text(0, 0, dialog.name, {fontSize: '30px', fontStyle: 'bold', color: '#c50d0d'}));
+        group.add(group.text = this.scene.add.text(0, group.name.height, dialog.text, {fontSize: '20px', color: '#ffffff'}));
 
         return group
     }

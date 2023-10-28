@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import {Button} from "../controls";
 import {scrmng} from "../scrmng";
+import {Inventary} from "../core/inventary";
 
 export class MenuScene extends Phaser.Scene {
     constructor() {
@@ -30,6 +31,8 @@ export class MenuScene extends Phaser.Scene {
         me.menuContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
         me.menuContainer.add(me.back = me.add.image(0, 0, 'menu_back').setScale(0.5));
 
+        me.menuContainer.add(me.inventary = new Inventary(me, 0, 0));
+
         me.buttons = [];
 
         me.menuContainer.add(me.startBtn = new Button(me, 100, 0, 'button_menu', null, () => me.gameTransition(), me));
@@ -47,6 +50,11 @@ export class MenuScene extends Phaser.Scene {
         me.menuContainer.add(me.aboutBtn = new Button(me, 100, 210 + 60, 'button_menu', null, () => {}, me));
         me.aboutBtn.addLabel(0, 0, 'About');
         me.buttons.push(me.aboutBtn);
+
+        me.menuContainer.add(me.inventaryBtn = new Button(me, 100, -200, 'button_menu', null, () => {
+            me.inventary.open();
+        }, me));
+        me.inventaryBtn.addLabel(0, 0, 'Inventary');
     }
 
     gameTransition() {
