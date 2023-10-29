@@ -114,7 +114,6 @@ export class BathRoomScene extends Phaser.Scene {
                         console.log('идем в коридор');
                         me.scene.start('corridor_1');
                     }
-
                 }, me);
             }
 
@@ -125,7 +124,6 @@ export class BathRoomScene extends Phaser.Scene {
                 console.log('предмет найдет');
             } else {
                 console.log('предмет не найден');
-
 
                 me.mng_dialogs.destroy();
                 me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_part_2.reverse()));
@@ -141,7 +139,6 @@ export class BathRoomScene extends Phaser.Scene {
                         console.log('идем в коридор');
                         me.scene.start('corridor_1');
                     }
-
                 }, me);
             }
 

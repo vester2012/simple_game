@@ -2,6 +2,8 @@ export class Dialogs_Manager extends Phaser.GameObjects.Container {
     constructor(scene, x, y, dialogs) {
         super(scene, x, y);
 
+        this.scene = scene;
+
         this.dialogs = dialogs;
         this.dialogsArr = [];
         this.prevDialog = null;
@@ -24,6 +26,7 @@ export class Dialogs_Manager extends Phaser.GameObjects.Container {
 
         group.add(group.name = this.scene.add.text(0, 0, dialog.name, {fontSize: '30px', fontStyle: 'bold', color: '#c50d0d'}));
         group.add(group.text = this.scene.add.text(0, group.name.height, dialog.text, {fontSize: '20px', color: '#ffffff'}));
+        group.effect = dialog.effect;
 
         return group
     }
@@ -31,7 +34,18 @@ export class Dialogs_Manager extends Phaser.GameObjects.Container {
     nextDialog() {
         this.prevDialog = this.currDialog;
         this.currDialog = this.dialogsArr.pop();
-        if (this.currDialog) this.scene.tweens.add({ targets: this.currDialog, alpha: 1, duration: 300 });
+        if (this.currDialog) {
+            this.scene.tweens.add({ targets: this.currDialog, alpha: 1, duration: 300 });
+            if (this.currDialog.effect) {
+                if (this.currDialog.effect === 'fadeIn') {
+                    this.scene.cameras.main.fadeIn(1000, 255, 255, 255);
+                }
+                if (this.currDialog.effect === 'fadeOut') {
+                    this.scene.cameras.main.fadeOut(1000, 0, 0, 0);
+                }
+            }
+
+        }
     }
 
     hidePrevDialogs() {
