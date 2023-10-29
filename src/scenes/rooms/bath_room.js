@@ -33,11 +33,6 @@ const dialogs_attempt = [
     { name: 'Джон', text: 'Ничего...', sound: null },
 ]
 
-const nextScenes = [
-    { name: 'Кабинет', nameScene: 'writersroom'},
-    { name: 'Коридор', nameScene: 'corridor_1'},
-]
-
 export class BathRoomScene extends Phaser.Scene {
     constructor() {
         super({key: 'bathroom'});

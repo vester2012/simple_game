@@ -23,7 +23,7 @@ const dialogs = [
 const nextScenes = [
     { name: 'Ванная', nameScene: 'bathroom'},
     { name: 'Кабинет', nameScene: 'writersroom'},
-    { name: 'Коридор', nameScene: 'corridor_1'},
+    { name: 'Коридор', nameScene: 'corridor_2'},
     { name: 'Гардероб', nameScene: 'wardrobe'}
 ]
 
@@ -42,7 +42,6 @@ export class BedroomScene extends Phaser.Scene {
 
         me.roomContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
         me.roomContainer.add(me.back = me.add.image(0, 0, 'bedroom_back').setScale(0.5));
-
         me.roomContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('debug'), me));
 
         me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs.reverse()));
@@ -66,7 +65,6 @@ export class BedroomScene extends Phaser.Scene {
                     me.tweens.add({ targets: tmp, alpha: 1, scale: 1, duration: 300, delay: id * 50 });
                 })
             }
-
         }, me);
     }
 }

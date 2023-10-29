@@ -38,10 +38,10 @@ export class Dialogs_Manager extends Phaser.GameObjects.Container {
             this.scene.tweens.add({ targets: this.currDialog, alpha: 1, duration: 300 });
             if (this.currDialog.effect) {
                 if (this.currDialog.effect === 'fadeIn') {
-                    this.scene.cameras.main.fadeIn(1000, 255, 255, 255);
+                    this.scene.cameras.main.fadeIn(500, 255, 255, 255);
                 }
                 if (this.currDialog.effect === 'fadeOut') {
-                    this.scene.cameras.main.fadeOut(1000, 0, 0, 0);
+                    this.scene.cameras.main.fadeOut(500, 0, 0, 0);
                 }
             }
 

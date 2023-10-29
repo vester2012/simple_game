@@ -2,6 +2,8 @@ import Phaser from "phaser";
 import {Button} from "../../controls";
 import {scrmng} from "../../scrmng";
 
+/// общий коридор
+
 export class Corridor1Scene extends Phaser.Scene {
     constructor() {
         super({key: 'corridor_1'});

@@ -124,7 +124,6 @@ export class WriterRoomScene extends Phaser.Scene {
 
         me.roomContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
         me.roomContainer.add(me.back = me.add.image(0, 0, 'writer_back').setScale(0.5));
-
         me.roomContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('debug'), me));
 
         me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_part_1.reverse()));
@@ -157,9 +156,7 @@ export class WriterRoomScene extends Phaser.Scene {
     checkAttempt(button, ret) {
         let me = this;
 
-        me.btn_1.setVisible(false);
-        me.btn_2.setVisible(false);
-        me.btn_3.setVisible(false);
+        me.hideButtons();
 
         if (ret) {
             console.log('предмет найдет');
@@ -200,10 +197,7 @@ export class WriterRoomScene extends Phaser.Scene {
 
                     // Выскочить на незнакомца и постараться вырубить
                     me.roomContainer.add(me.btn_2 = new Button(me, 0, 200, 'button_menu', null, () => {
-
-                        me.btn_1.setVisible(false);
-                        me.btn_2.setVisible(false);
-                        me.btn_3.setVisible(false);
+                        me.hideButtons();
 
                         me.mng_dialogs.destroy();
                         me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_part_3.reverse()));
@@ -224,14 +218,33 @@ export class WriterRoomScene extends Phaser.Scene {
 
                     // Остаться в кабинете и ждать
                     me.roomContainer.add(me.btn_3 = new Button(me, 0, 300, 'button_menu', null, () => {
-                        me.btn_1.setVisible(false);
-                        me.btn_2.setVisible(false);
-                        me.btn_3.setVisible(false);
+                        me.hideButtons();
+
+                        me.mng_dialogs.destroy();
+                        me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_part_4.reverse()));
+
+                        me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
+                        me.input.keyboard.on('keydown-SPACE', () => {
+                            if (me.mng_dialogs.isNextDialog()) {
+                                me.mng_dialogs.nextDialog();
+                                me.mng_dialogs.hidePrevDialogs();
+                            } else {
+                                me.mng_dialogs.hideLastDialog();
+                                me.input.keyboard.off('keydown-SPACE');
+                            }
+                        }, me);
+
                     }, me));
                     me.btn_3.addLabel(0, 0, 'Остаться в кабинете и ждать', {fontSize: '18px'});
                 }
 
             }, me);
         }
+    }
+
+    hideButtons() {
+        this.btn_1.setVisible(false);
+        this.btn_2.setVisible(false);
+        this.btn_3.setVisible(false);
     }
 }
