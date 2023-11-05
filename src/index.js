@@ -7,7 +7,7 @@ import {Corridor1Scene} from "./scenes/rooms/corridor_1_room";
 import {Corridor2Scene} from "./scenes/rooms/corridor_2_room";
 import {Corridor3Scene} from "./scenes/rooms/corridor_3_room";
 
-import {BedroomScene} from "./scenes/rooms/bed_room";
+import {StartScene} from "./scenes/start_scene";
 import {BathRoomScene} from "./scenes/rooms/bath_room"
 import {LivingRoomScene} from "./scenes/rooms/living_room";
 import {ToiletRoomScene} from "./scenes/rooms/toilet_room";
@@ -31,7 +31,7 @@ const config = {
         Corridor1Scene,
         Corridor2Scene,
         Corridor3Scene,
-        BedroomScene,
+        StartScene,
         BathRoomScene,
         LivingRoomScene,
         ToiletRoomScene,

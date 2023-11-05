@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import {scrmng} from "../../scrmng";
-import {Button} from "../../controls";
-import {Dialogs_Manager} from "../../core/dialogs_manager";
+import {scrmng} from "../scrmng";
+import {Button} from "../controls";
+import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs = [
     { name: 'Неизвестный', text: 'АХАХАХАХХАХА', sound: 'testsnd' },
@@ -27,14 +27,14 @@ const nextScenes = [
     { name: 'Гардероб', nameScene: 'wardrobe'}
 ]
 
-export class BedroomScene extends Phaser.Scene {
+export class StartScene extends Phaser.Scene {
     constructor() {
         super({key: 'bedroom'});
 
         console.log('state bedroom', this);
     }
 
-    create () {
+    create() {
         let me = this;
 
         me.cameras.main.fade(0, 0, 0, 0, true);
@@ -44,6 +44,11 @@ export class BedroomScene extends Phaser.Scene {
         me.roomContainer.add(me.back = me.add.image(0, 0, 'bedroom_back').setScale(0.5));
         me.roomContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('debug'), me));
 
+        me.act1();
+    }
+
+    act1() {
+        let me = this;
         me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs.reverse()));
 
         me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
@@ -56,9 +61,7 @@ export class BedroomScene extends Phaser.Scene {
                 me.input.keyboard.off('keydown-SPACE');
                 nextScenes.forEach((state, id) => {
                     let tmp;
-                    me.roomContainer.add(tmp = new Button(me, 0, 100 * id, 'button_menu', null, () => {
-                        me.scene.start(state.nameScene);
-                    }, me));
+                    me.roomContainer.add(tmp = new Button(me, 0, 100 * id, 'button_menu', null, () => me.scene.start(state.nameScene), me));
                     tmp.addLabel(0, 0, state.name);
                     tmp.setScale(0).setAlpha(0);
 
