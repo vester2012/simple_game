@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import {scrmng} from "../../scrmng";
-import {Button} from "../../controls";
-import {Dialogs_Manager} from "../../core/dialogs_manager";
+import {scrmng} from "../scrmng";
+import {Button} from "../controls";
+import {Dialogs_Manager} from "../core/dialogs_manager";
 
 /// коридор
 
@@ -30,7 +30,7 @@ const dialogs_hide_corridor = [
 
 export class CorridorScene extends Phaser.Scene {
     constructor() {
-        super({key: 'corridor'});
+        super();
 
         console.log('state corridor', this);
     }
@@ -64,7 +64,7 @@ export class CorridorScene extends Phaser.Scene {
                 // Обратно в спалню
 
                 me.roomContainer.add(me.btn_1 = new Button(me, 0, 100, 'button_menu', null, () => {
-                    me.scene.start('bedroom');
+                    me.scene.start('start_scene');
                 }, me));
                 me.btn_1.addLabel(0, 0, 'Обратно в спальню', {fontSize: '18px'});
 

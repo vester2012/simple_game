@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import {scrmng} from "../../scrmng";
-import {Button} from "../../controls";
-import {Dialogs_Manager} from "../../core/dialogs_manager";
+import {scrmng} from "../scrmng";
+import {Button} from "../controls";
+import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs = [
     { name: '...', text: 'Пробегая в детскую Джон слышит женские всхлипы и неразборчивые слова.', sound: 'girl_voice' },
@@ -56,7 +56,7 @@ export class ChildrenScene extends Phaser.Scene {
             } else {
                 me.mng_dialogs.hideLastDialog();
                 me.input.keyboard.off('keydown-SPACE');
-                me.scene.start('corridor_1');
+                me.scene.start('corridor_scene');
             }
         }, me);
     }

@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import {Button} from "../../controls";
-import {scrmng} from "../../scrmng";
-import {Dialogs_Manager} from "../../core/dialogs_manager";
+import {Button} from "../controls";
+import {scrmng} from "../scrmng";
+import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs_act_1 = [
     { name: '...', text: 'Успешно выбравшись в коридор Джон ощутил себя чуть свободнее.', sound: null },
@@ -74,7 +74,7 @@ export class CommonRoomScene extends Phaser.Scene {
         me.cameras.main.fadeIn(1000);
 
         me.roomContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
-        me.roomContainer.add(me.back = me.add.image(0, 0, 'corridor_back_1').setScale(0.5));
+        me.roomContainer.add(me.back = me.add.image(0, 0, 'common_back').setScale(0.5));
 
         me.roomContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('debug'), me));
 
@@ -189,7 +189,7 @@ export class CommonRoomScene extends Phaser.Scene {
         me.btn_4.addLabel(0, 0, 'Зайти в туалет', {fontSize: '18px'});
 
         me.roomContainer.add(me.btn_5 = new Button(me, 0, 200, 'button_menu', null, () => {
-            me.scene.start('guest_bedroom');
+            me.scene.launch('guest_bedroom');
         }, me));
         me.btn_5.addLabel(0, 0, 'Зайти в гостевую спальню', {fontSize: '18px'});
 

@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import {scrmng} from "../scrmng";
 import {Button} from "../controls";
 import {Dialogs_Manager} from "../core/dialogs_manager";
+import {unitmng} from "../game";
 
 const dialogs_part_1 = [
     { name: '...', text: 'Войдя в кабинет Джон слышит голоса из соседней комнаты.', sound: null },
@@ -23,8 +24,7 @@ const dialogs_part_1 = [
 ]
 
 const dialogs_success = [
-    { name: 'Джон', text: 'Нашел!"\n' +
-            'Обрадовался Джон и чуть не обронил пушку.', sound: null },
+    { name: 'Джон', text: 'Нашел!\nОбрадовался Джон и чуть не обронил пушку.', sound: null },
     { name: 'Джон', text: 'Дебил. Если меня не прикончат сегодня, то я чертов счастливчик', sound: null },
 ]
 
@@ -161,6 +161,8 @@ export class CabinetScene extends Phaser.Scene {
         if (ret) {
             console.log('предмет найдет');
 
+            unitmng.setGun();
+
             me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_success.reverse()));
 
             me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
@@ -191,7 +193,7 @@ export class CabinetScene extends Phaser.Scene {
 
                     // Проскочить в коридор
                     me.roomContainer.add(me.btn_1 = new Button(me, 0, 100, 'button_menu', null, () => {
-                        me.scene.start('corridor_1');
+                        me.scene.start('corridor_scene');
                     }, me));
                     me.btn_1.addLabel(0, 0, 'Проскочить в коридор', {fontSize: '18px'});
 

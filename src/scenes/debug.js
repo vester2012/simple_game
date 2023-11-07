@@ -15,7 +15,7 @@ export class DebugScene extends Phaser.Scene {
         me.debugContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
 
         me.debugContainer.add(me.back = me.add.image(0, 0, 'menu_back').setScale(0.5));
-        me.debugContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('menu'), me));
+        me.debugContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('menu_scene'), me));
 
         me.buttons = [];
 
@@ -31,7 +31,7 @@ export class DebugScene extends Phaser.Scene {
         me.corridor3Btn.addLabel(0, 0, 'technical room');
         me.buttons.push(me.corridor3Btn);
 
-        me.debugContainer.add(me.bedroomBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('bedroom'), me));
+        me.debugContainer.add(me.bedroomBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('start_scene'), me));
         me.bedroomBtn.addLabel(0, 0, 'bedroom');
         me.buttons.push(me.bedroomBtn);
 

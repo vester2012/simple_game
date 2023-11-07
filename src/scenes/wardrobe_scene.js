@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import {scrmng} from "../../scrmng";
-import {Button} from "../../controls";
-import {Dialogs_Manager} from "../../core/dialogs_manager";
+import {scrmng} from "../scrmng";
+import {Button} from "../controls";
+import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs = [
     { name: '...', text: 'Джон заходит в гардероб', sound: null },

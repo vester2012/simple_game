@@ -2,14 +2,16 @@ import Phaser from "phaser";
 import {Button} from "../controls";
 import {scrmng} from "../scrmng";
 import {Inventary} from "../core/inventary";
+import {unitmng} from "../game";
 
 export class MenuScene extends Phaser.Scene {
     constructor() {
-        super({key: 'menu'});
+        super();
 
         console.log('state menu', this);
 
         scrmng.setInstance(this);
+        unitmng.setInstance(this);
 
         this.bindedOrientationChange = this.onOrientationChange.bind(this);
         window.addEventListener("orientationchange", this.bindedOrientationChange);
@@ -69,6 +71,6 @@ export class MenuScene extends Phaser.Scene {
         camera.zoomTo(10, 1000);
         camera.fadeOut(1000, 0, 0, 0);
 
-        me.time.delayedCall(1100, () => me.scene.start('bedroom'));
+        me.time.delayedCall(1100, () => me.scene.start('start_scene'));
     }
 }

@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import {scrmng} from "../scrmng";
 import {Button} from "../controls";
 import {Dialogs_Manager} from "../core/dialogs_manager";
+import {unitmng} from "../game";
 
 const dialogs_part_1 = [
     { name: '...', text: 'Зайдя в ванную Джон тихо прикрыл за собой дверь и подошел к зеркалу.', sound: null },
@@ -11,7 +12,7 @@ const dialogs_part_1 = [
     { name: '...', text: 'Медленно поворачивает кран, слегка умывает себя водой. Вроде становится легче…', sound: null },
     { name: 'Неизвестный', text: 'Зацени!!!', sound: 'snd_play_music' },
     { name: 'Неизвестный', text: 'Упс', sound: null },
-    { name: 'Джон', text: 'КОНЧЕНЫЕ, ЭТО БЫЛА СИСТЕМА ЗА 10 ШТУК, НАДЕЮСЬ У ВАС ЕСТЬ БАБКИ, Я ОТСУЖУ ВСЁ!!!', sound: null },
+    { name: 'Джон', text: 'КОНЧЕНЫЕ, ЭТО БЫЛА СИСТЕМА ЗА 10 ШТУК,\nНАДЕЮСЬ У ВАС ЕСТЬ БАБКИ, Я ОТСУЖУ ВСЁ!!!', sound: null },
     { name: '...', text: 'Джон зло осматривает комнату.', sound: null },
 ]
 
@@ -90,7 +91,10 @@ export class BathroomScene extends Phaser.Scene {
 
             if (ret) {
                 console.log('предмет найдет');
-                console.log('идем в кабинет')
+                console.log('идем в кабинет');
+
+                unitmng.setHealth();
+
                 me.scene.start('writersroom');
             } else {
                 console.log('предмет не найден');
@@ -106,7 +110,7 @@ export class BathroomScene extends Phaser.Scene {
                         me.mng_dialogs.hideLastDialog();
                         me.input.keyboard.off('keydown-SPACE');
                         console.log('идем в коридор');
-                        me.scene.start('corridor_1');
+                        me.scene.start('corridor_scene');
                     }
                 }, me);
             }
@@ -115,6 +119,7 @@ export class BathroomScene extends Phaser.Scene {
             console.log('поптыка 2');
 
             if (ret) {
+                unitmng.setHealth();
                 console.log('предмет найдет');
             } else {
                 console.log('предмет не найден');
@@ -131,7 +136,7 @@ export class BathroomScene extends Phaser.Scene {
                         me.mng_dialogs.hideLastDialog();
                         me.input.keyboard.off('keydown-SPACE');
                         console.log('идем в коридор');
-                        me.scene.start('corridor_1');
+                        me.scene.start('corridor_scene');
                     }
                 }, me);
             }
