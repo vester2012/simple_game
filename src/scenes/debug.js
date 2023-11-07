@@ -19,16 +19,16 @@ export class DebugScene extends Phaser.Scene {
 
         me.buttons = [];
 
-        me.debugContainer.add(me.corridor1Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('corridor_1'), me));
-        me.corridor1Btn.addLabel(0, 0, 'corridor 1');
+        me.debugContainer.add(me.corridor1Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('common'), me));
+        me.corridor1Btn.addLabel(0, 0, 'common room');
         me.buttons.push(me.corridor1Btn);
 
         me.debugContainer.add(me.corridor2Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('corridor_2'), me));
         me.corridor2Btn.addLabel(0, 0, 'corridor 2');
         me.buttons.push(me.corridor2Btn);
 
-        me.debugContainer.add(me.corridor3Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('corridor_3'), me));
-        me.corridor3Btn.addLabel(0, 0, 'corridor 3');
+        me.debugContainer.add(me.corridor3Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('technicalroom'), me));
+        me.corridor3Btn.addLabel(0, 0, 'technical room');
         me.buttons.push(me.corridor3Btn);
 
         me.debugContainer.add(me.bedroomBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('bedroom'), me));
@@ -39,8 +39,8 @@ export class DebugScene extends Phaser.Scene {
         me.bathroomBtn.addLabel(0, 0, 'bathroom');
         me.buttons.push(me.bathroomBtn);
 
-        me.debugContainer.add(me.livingroomBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('livingroom'), me));
-        me.livingroomBtn.addLabel(0, 0, 'living room');
+        me.debugContainer.add(me.livingroomBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('guest_bedroom'), me));
+        me.livingroomBtn.addLabel(0, 0, 'guest bedroom');
         me.buttons.push(me.livingroomBtn);
 
         me.debugContainer.add(me.toiletBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('toilet'), me));

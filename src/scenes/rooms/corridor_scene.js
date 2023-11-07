@@ -28,14 +28,14 @@ const dialogs_hide_corridor = [
     { name: '', text: '', sound: null, effect: 'fadeOut' },
 ];
 
-export class Corridor2Scene extends Phaser.Scene {
+export class CorridorScene extends Phaser.Scene {
     constructor() {
-        super({key: 'corridor_2'});
+        super({key: 'corridor'});
 
-        console.log('state corridor 2', this);
+        console.log('state corridor', this);
     }
 
-    create () {
+    create() {
         let me = this;
 
         me.cameras.main.fade(0, 0, 0, 0, true);
@@ -45,6 +45,11 @@ export class Corridor2Scene extends Phaser.Scene {
         me.roomContainer.add(me.back = me.add.image(0, 0, 'corridor_back_2').setScale(0.5));
         me.roomContainer.add(me.exitBtn = new Button(me, 450, -450, 'button_exit', null, () => me.scene.start('debug'), me));
 
+        me.act1();
+    }
+
+    act1() {
+        let me = this;
         me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs.reverse()));
 
         me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
@@ -76,45 +81,56 @@ export class Corridor2Scene extends Phaser.Scene {
                     me.btn_2.visible = false;
                     me.btn_3.visible = false;
 
-                    me.mng_dialogs.destroy();
-                    me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_next_corridor.reverse()));
-
-                    me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
-                    me.input.keyboard.on('keydown-SPACE', () => {
-                        if (me.mng_dialogs.isNextDialog()) {
-                            me.mng_dialogs.nextDialog();
-                            me.mng_dialogs.hidePrevDialogs();
-                        } else {
-
-                            me.roomContainer.add(me.btn_4 = new Button(me, 0, 100, 'button_menu', null, () => {
-                                me.scene.start('children');
-                            }, me));
-                            me.btn_4.addLabel(0, 0, 'Зайти в детскую', {fontSize: '18px'});
-
-                            me.roomContainer.add(me.btn_5 = new Button(me, 0, 200, 'button_menu', null, () => {
-
-                                me.btn_4.visible = false;
-                                me.btn_5.visible = false;
-
-                                me.mng_dialogs.destroy();
-                                me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_hide_corridor.reverse()));
-
-                                me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
-                                me.input.keyboard.on('keydown-SPACE', () => {
-                                    if (me.mng_dialogs.isNextDialog()) {
-                                        me.mng_dialogs.nextDialog();
-                                        me.mng_dialogs.hidePrevDialogs();
-                                    }
-                                });
-                            }, me));
-                            me.btn_5.addLabel(0, 0, 'Постараться пройти дальше\nи спрятаться за углом/скульптурой', {fontSize: '18px'});
-                        }
-                    });
+                    me.act2();
 
                 }, me));
                 me.btn_3.addLabel(0, 0, 'Пройти дальше по коридору', {fontSize: '18px'});
-
             }
         }, me);
+    }
+
+    act2() {
+        let me = this;
+
+        me.mng_dialogs.destroy();
+        me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_next_corridor.reverse()));
+
+        me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
+        me.input.keyboard.on('keydown-SPACE', () => {
+            if (me.mng_dialogs.isNextDialog()) {
+                me.mng_dialogs.nextDialog();
+                me.mng_dialogs.hidePrevDialogs();
+            } else {
+                me.roomContainer.add(me.btn_4 = new Button(me, 0, 100, 'button_menu', null, () => {
+                    me.scene.start('children');
+                }, me));
+                me.btn_4.addLabel(0, 0, 'Зайти в детскую', {fontSize: '18px'});
+
+                me.roomContainer.add(me.btn_5 = new Button(me, 0, 200, 'button_menu', null, () => {
+
+                    me.btn_4.visible = false;
+                    me.btn_5.visible = false;
+
+                    me.act3();
+
+                }, me));
+                me.btn_5.addLabel(0, 0, 'Постараться пройти дальше\nи спрятаться за углом/скульптурой', {fontSize: '18px'});
+            }
+        });
+    }
+
+    act3() {
+        let me = this;
+
+        me.mng_dialogs.destroy();
+        me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_hide_corridor.reverse()));
+
+        me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
+        me.input.keyboard.on('keydown-SPACE', () => {
+            if (me.mng_dialogs.isNextDialog()) {
+                me.mng_dialogs.nextDialog();
+                me.mng_dialogs.hidePrevDialogs();
+            }
+        });
     }
 }

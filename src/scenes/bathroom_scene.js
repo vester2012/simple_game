@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import {scrmng} from "../../scrmng";
-import {Button} from "../../controls";
-import {Dialogs_Manager} from "../../core/dialogs_manager";
+import {scrmng} from "../scrmng";
+import {Button} from "../controls";
+import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs_part_1 = [
     { name: '...', text: 'Зайдя в ванную Джон тихо прикрыл за собой дверь и подошел к зеркалу.', sound: null },
@@ -33,11 +33,10 @@ const dialogs_attempt = [
     { name: 'Джон', text: 'Ничего...', sound: null },
 ]
 
-export class BathRoomScene extends Phaser.Scene {
+export class BathroomScene extends Phaser.Scene {
     constructor() {
         super({key: 'bathroom'});
 
-        this._attempts = 2;
         this.userAttermpts = 0;
 
         console.log('state bathroom', this);

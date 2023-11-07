@@ -4,10 +4,7 @@ export class Inventary extends Phaser.GameObjects.Container {
 
         this.scene = scene;
 
-        this.setScale(0)
-            .setAlpha(0)
-            .setVisible(false)
-            .setActive(false);
+        this.setScale(0).setAlpha(0).setVisible(false).setActive(false);
     }
 
     open() {

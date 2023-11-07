@@ -1,7 +1,7 @@
 import Phaser from "phaser";
-import {scrmng} from "../../scrmng";
-import {Button} from "../../controls";
-import {Dialogs_Manager} from "../../core/dialogs_manager";
+import {scrmng} from "../scrmng";
+import {Button} from "../controls";
+import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs_part_1 = [
     { name: '...', text: 'Войдя в кабинет Джон слышит голоса из соседней комнаты.', sound: null },
@@ -110,7 +110,7 @@ const dialogs_part_4 = [
 ]
 
 
-export class WriterRoomScene extends Phaser.Scene {
+export class CabinetScene extends Phaser.Scene {
     constructor() {
         super({key: 'writersroom'});
         console.log('state writersroom', this);

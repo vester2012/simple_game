@@ -7,6 +7,7 @@ import back_corridor_1 from "../assets/rooms/corridor/corridor_back_1.jpg";
 import back_corridor_2 from "../assets/rooms/corridor/corridor_back_2.jpg";
 import back_corridor_3 from "../assets/rooms/corridor/corridor_back_3.jpg";
 
+import back_guest_bedroom from "../assets/rooms/guest_bedroom_back.jpg"
 import back_bedroom from "../assets/rooms/bedroom_back.jpg";
 import back_bathroom from "../assets/rooms/bathroom_back.jpg";
 import back_livingroom from "../assets/rooms/livingroom_back.jpg";
@@ -14,6 +15,7 @@ import back_toilet from "../assets/rooms/toilet_back.jpg";
 import back_wardrobe from "../assets/rooms/wardrobe_back.jpg";
 import back_children from "../assets/rooms/childrens_back.jpg";
 import back_writer from "../assets/rooms/writer_office_back.jpg";
+import back_technical from "../assets/rooms/technicalroom_back.jpg";
 
 let Game;
 
@@ -35,6 +37,7 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image('corridor_back_2', back_corridor_2);
         this.load.image('corridor_back_3', back_corridor_3);
 
+        this.load.image('guest_bedroom_back', back_guest_bedroom);
         this.load.image('bedroom_back', back_bedroom);
         this.load.image('bathroom_back', back_bathroom);
         this.load.image('livingroom_back', back_livingroom);
@@ -42,6 +45,7 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image('wardrobe_back', back_wardrobe);
         this.load.image('children_back', back_children);
         this.load.image('writer_back', back_writer);
+        this.load.image('technical_back', back_technical);
 
         this.load.audio('snd_click', '../../src/assets/sounds/click.ogg');
         this.load.audio('snd_menu_loop', '../../src/assets/sounds/menu_loop.mp3');
