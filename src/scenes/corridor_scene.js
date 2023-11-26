@@ -6,26 +6,24 @@ import {Dialogs_Manager} from "../core/dialogs_manager";
 /// коридор
 
 const dialogs = [
-    { name: '...', text: 'Джон уверенно подходит к выходу из спальни и аккуратно приоткрывает дверь.\nВидны тени, гуляющие по дому.', sound: null },
+    { image: 'person_john', name: '...', text: 'Джон уверенно подходит к выходу из спальни и аккуратно приоткрывает дверь.\nВидны тени, гуляющие по дому.', sound: null },
 ]
 
 const dialogs_next_corridor = [
-    { name: '...', text: 'Джон аккуратно вышел из спальни и попали в коридор.', sound: null },
-    { name: '...', text: 'Голоса неизвестных стали ближе.', sound: null },
-    { name: '...', text: 'Нужно срочно что-то делать!', sound: null },
+    { image: 'person_john', name: '...', text: 'Джон аккуратно вышел из спальни и попали в коридор.', sound: null },
+    { image: 'person_john', name: '...', text: 'Голоса неизвестных стали ближе.', sound: null },
+    { image: 'person_john', name: '...', text: 'Нужно срочно что-то делать!', sound: null },
 ]
 
 const dialogs_hide_corridor = [
-    { name: '...', text: 'Джон неуклюже забежал за статую и отставший от группы неизвестный его заметил:', sound: null },
-    { name: 'Неизвестный', text: 'Погодите-ка... Ребят, тут что-то есть', sound: null },
-    { name: '...', text: 'На его зов неспеша приходят остальные.', sound: null },
-    { name: 'Другой неизвестный', text: 'Если это очередной трофей "за лучший экранизированный роман", то я посажу тебя на него', sound: null },
-    { name: 'Неизвестный', text: 'Нет, тебе точно понравится! Ку-ку, малыш, испугался?', sound: null },
-    { name: '...', text: 'Писатель медленно выходит из-за статуи, его слепит свет фонарика.', sound: null },
-    { name: 'Джон', text: 'Наверное... А вы кто?', sound: null },
-    { name: 'Неизвестные', text: 'Сейчас, говнюк, узнаешь!"', sound: null },
-    { name: '...', text: 'Джон оглушен. Его тело нашли утром.', sound: null },
-    { name: '', text: '', sound: null, effect: 'fadeOut' },
+    { image: 'person_john',    name: '...', text: 'Джон неуклюже забежал за статую и отставший от группы неизвестный его заметил:', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестный', text: 'Погодите-ка... Ребят, тут что-то есть', sound: null },
+    { image: 'person_enemy_1', name: '...', text: 'На его зов неспеша приходят остальные.', sound: null },
+    { image: 'person_enemy_2', name: 'Другой неизвестный', text: 'Если это очередной трофей "за лучший экранизированный роман", то я посажу тебя на него', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестный', text: 'Нет, тебе точно понравится! Ку-ку, малыш, испугался?', sound: null },
+    { image: 'person_john',    name: '...', text: 'Писатель медленно выходит из-за статуи, его слепит свет фонарика.', sound: null },
+    { image: 'person_john',    name: 'Джон', text: 'Наверное... А вы кто?', sound: null },
+    { image: 'person_enemy_3', name: 'Неизвестные', text: 'Сейчас, говнюк, узнаешь!"', sound: null },
 ];
 
 export class CorridorScene extends Phaser.Scene {
@@ -130,7 +128,10 @@ export class CorridorScene extends Phaser.Scene {
             if (me.mng_dialogs.isNextDialog()) {
                 me.mng_dialogs.nextDialog();
                 me.mng_dialogs.hidePrevDialogs();
+            } else {
+                me.scene.start('bad_end_scene');
             }
         });
     }
 }
+

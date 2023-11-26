@@ -16,6 +16,14 @@ import back_wardrobe from "../assets/rooms/wardrobe_back.jpg";
 import back_children from "../assets/rooms/childrens_back.jpg";
 import back_writer from "../assets/rooms/writer_office_back.jpg";
 import back_technical from "../assets/rooms/technicalroom_back.jpg";
+import back_bad_end from "../assets/rooms/bad_ending_back.jpg";
+
+import person_meredit from "../assets/persons/meredit.png";
+import person_john from "../assets/persons/john.png";
+import person_enemy_1 from "../assets/persons/enemy_1.png";
+import person_enemy_2 from "../assets/persons/enemy_2.png";
+import person_enemy_3 from "../assets/persons/enemy_3.png";
+
 
 import {MenuScene} from "./menu";
 import {StartScene} from "./start_scene";
@@ -48,6 +56,13 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image('children_back',      back_children);
         this.load.image('writer_back',        back_writer);
         this.load.image('technical_back',     back_technical);
+        this.load.image('bad_end_back',       back_bad_end);
+
+        this.load.image('person_meredit',     person_meredit);
+        this.load.image('person_john',        person_john);
+        this.load.image('person_enemy_1',     person_enemy_1);
+        this.load.image('person_enemy_2',     person_enemy_2);
+        this.load.image('person_enemy_3',     person_enemy_3);
 
         this.load.audio('snd_click', '../../src/assets/sounds/click.ogg');
         this.load.audio('snd_menu_loop', '../../src/assets/sounds/menu_loop.mp3');

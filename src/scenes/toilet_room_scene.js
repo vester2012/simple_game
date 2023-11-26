@@ -6,7 +6,6 @@ import {Dialogs_Manager} from "../core/dialogs_manager";
 const dialogs_act_1 = [
     { name: '...', text: 'Джон и Мередит вошли в туалет, аккуратно прикрыв дверь.', sound: null },
     { name: '...', text: 'Зайдя в эту комнату они потеряли драгоценное время и оказались в ловушке.', sound: null },
-    { name: '', text: '', sound: null, effect: 'fadeOut' },
 ]
 
 export class ToiletRoomScene extends Phaser.Scene {
@@ -43,6 +42,7 @@ export class ToiletRoomScene extends Phaser.Scene {
             } else {
                 me.mng_dialogs.hideLastDialog();
                 me.input.keyboard.off('keydown-SPACE');
+                me.scene.start('bad_end_scene');
             }
         }, me);
     }

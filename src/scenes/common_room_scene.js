@@ -4,65 +4,63 @@ import {scrmng} from "../scrmng";
 import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs_act_1 = [
-    { name: '...', text: 'Успешно выбравшись в коридор Джон ощутил себя чуть свободнее.', sound: null },
-    { name: 'Джон', text: 'Кто эти люди? Что им от него нужно? Сколько их тут вообще?', sound: null },
-    { name: 'Девушка', text: 'Я сказала вам - я не знаю где он!', sound: null },
-    { name: 'Третий неизвестный', text: 'Да-да, персонал не в курсе планов хозяина... Ты меня за дурака держишь?!', sound: null },
-    { name: '...', text: 'Джон прислушался.', sound: null },
-    { name: 'Джон', text: 'Стоп... Мередит?! Что она здесь делает?!', sound: null },
-    { name: 'Мередит', text: 'Повторюсь: я не знаю! Действительно не знаю!\nМожет свалил в бар, может поехал к кому на вечеринку... Новый год же!', sound: null },
-    { name: 'Третий неизвестный', text: 'Может позвоним ему? Где твой телефончик?', sound: null },
-    { name: '...', text: 'Неизвестный подошел к девушке и начал ее обыскивать', sound: null },
-    { name: 'Мередит', text: 'Пожалуйста, не надо!', sound: null },
-    { name: 'Третий неизвестный', text: 'Поуказывай мне', sound: null },
-    { name: '...', text: '...', sound: 'snd_beeps' },
-    { name: '...', text: '...', sound: 'snd_subscriber unavailable' },
-    { name: '...', text: 'Мужчина вновь подходит к девушке и хочет заткнуть ей рот тряпкой, но Мередит кусает его.', sound: null },
-    { name: '...', text: 'Мужчина отскакивает.', sound: null },
-    { name: 'Третий неизвестный', text: 'Сука!', sound: null },
-    { name: '...', text: 'Он отряхает руку и дает Мередит сильную пощечину, затыкает ей рот и уходит, усмехаясь над ней.', sound: null },
-    { name: 'Тртий неизвестный', text: 'Знаешь... А ведь свидетелей не оставляют.\nЯ хотел по хорошему, но ты не оставляешь мне выбора.\nДумаю, что парни оценят мою идею...', sound: null },
-    { name: '...', text: 'Голос начал приближаться и Джон спрятался за стену.', sound: null },
-    { name: '...', text: 'Голос отдалился.', sound: null },
-    { name: 'Джон', text: 'Они не заметили.', sound: null },
-    { name: '...', text: 'Нужно решить, куда отправиться дальше', sound: null },
+    { image: 'person_john',    name: '...', text: 'Успешно выбравшись в коридор Джон ощутил себя чуть свободнее.', sound: null },
+    { image: 'person_john',    name: 'Джон', text: 'Кто эти люди? Что им от него нужно? Сколько их тут вообще?', sound: null },
+    { image: 'person_meredit', name: 'Девушка', text: 'Я сказала вам - я не знаю где он!', sound: null },
+    { image: 'person_enemy_3', name: 'Третий неизвестный', text: 'Да-да, персонал не в курсе планов хозяина... Ты меня за дурака держишь?!', sound: null },
+    { image: 'person_john',    name: '...', text: 'Джон прислушался.', sound: null },
+    { image: 'person_john',    name: 'Джон', text: 'Стоп... Мередит?! Что она здесь делает?!', sound: null },
+    { image: 'person_meredit', name: 'Мередит', text: 'Повторюсь: я не знаю! Действительно не знаю!\nМожет свалил в бар, может поехал к кому на вечеринку... Новый год же!', sound: null },
+    { image: 'person_enemy_3', name: 'Третий неизвестный', text: 'Может позвоним ему? Где твой телефончик?', sound: null },
+    { image: 'person_enemy_3', name: '...', text: 'Неизвестный подошел к девушке и начал ее обыскивать', sound: null },
+    { image: 'person_meredit', name: 'Мередит', text: 'Пожалуйста, не надо!', sound: null },
+    { image: 'person_enemy_3', name: 'Третий неизвестный', text: 'Поуказывай мне', sound: null },
+    { image: '',               name: '...', text: '...', sound: 'snd_beeps' },
+    { image: '',               name: '...', text: '...', sound: 'snd_subscriber unavailable' },
+    { image: 'person_enemy_3', name: '...', text: 'Мужчина вновь подходит к девушке и хочет заткнуть ей рот тряпкой,\nно Мередит кусает его.', sound: null },
+    { image: 'person_enemy_3', name: '...', text: 'Мужчина отскакивает.', sound: null },
+    { image: 'person_enemy_3', name: 'Третий неизвестный', text: 'Сука!', sound: null },
+    { image: 'person_enemy_3', name: '...', text: 'Он отряхает руку и дает Мередит сильную пощечину,\nзатыкает ей рот и уходит, усмехаясь над ней.', sound: null },
+    { image: 'person_enemy_3', name: 'Тртий неизвестный', text: 'Знаешь... А ведь свидетелей не оставляют.\nЯ хотел по хорошему, но ты не оставляешь мне выбора.\nДумаю, что парни оценят мою идею...', sound: null },
+    { image: 'person_john',    name: '...', text: 'Голос начал приближаться и Джон спрятался за стену.', sound: null },
+    { image: 'person_john',    name: '...', text: 'Голос отдалился.', sound: null },
+    { image: 'person_john',    name: 'Джон', text: 'Они не заметили.', sound: null },
+    { image: 'person_john',    name: '...', text: 'Нужно решить, куда отправиться дальше', sound: null },
 ];
 
 const dialogs_act_1_technical = [
-    { name: '...', text: 'Успешно выбравшись в коридор Джон ощутил себя чуть свободнее.', sound: null },
-    { name: 'Джон', text: 'Может выйдет включить свет?', sound: null },
-    { name: '...', text: 'Подойдя он видит, что ручка сорвана.', sound: null },
-    { name: '...', text: 'Пытается ее открыть силой - не поддается.', sound: null },
-    { name: 'Джон', text: 'Была не была', sound: null },
-    { name: '...', text: 'Сильный удар создает много шума, слышны шаги сзади.', sound: null },
-    { name: 'Джон', text: 'О нет..', sound: null },
-    { name: '', text: '', sound: null, effect: 'fadeOut' },
+    { image: 'person_john', name: '...', text: 'Успешно выбравшись в коридор Джон ощутил себя чуть свободнее.', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'Может выйдет включить свет?', sound: null },
+    { image: 'person_john', name: '...', text: 'Подойдя он видит, что ручка сорвана.', sound: null },
+    { image: 'person_john', name: '...', text: 'Пытается ее открыть силой - не поддается.', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'Была не была', sound: null },
+    { image: 'person_john', name: '...', text: 'Сильный удар создает много шума, слышны шаги сзади.', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'О нет..', sound: null },
 ];
 
 const dialogs_act_1_exit = [
-    { name: '...', text: 'Главный вход заблокирован, дверь не поддается.', sound: null },
-    { name: 'Джон', text: 'Предсказуемо', sound: null },
-    { name: '...', text: 'Один из незнакомцев вышел из спальни что-то насвистывая, шаги прекратились прямо позади писателя.', sound: null },
-    { name: 'Джон', text: 'О нет..', sound: null },
-    { name: '', text: '', sound: null, effect: 'fadeOut' },
+    { image: 'person_john', name: '...', text: 'Главный вход заблокирован, дверь не поддается.', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'Предсказуемо', sound: null },
+    { image: 'person_john', name: '...', text: 'Один из незнакомцев вышел из спальни что-то насвистывая, шаги прекратились прямо позади писателя.', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'О нет..', sound: null },
 ];
 
 const dialogs_act_1_next = [
-    { name: '...', text: 'Джон пошел дальше и услышал шаги в гостинной', sound: null },
-    { name: '...', text: 'Неизвестный осмотрел помещение, взглянул в окно', sound: null },
-    { name: 'Неизвестный', text: 'Ладно, у него вкус есть, вид что надо', sound: null },
-    { name: '...', text: 'Наступает тишина. Не слышно ничего. Джон отчетливо начинает слышать свое сердцебиение', sound: null },
-    { name: 'Джон', text: 'Думай, сука, думай', sound: null },
-    { name: 'Неизвестный', text: 'Что делать с девкой... Надо поговорить с парнями', sound: null },
-    { name: '...', text: 'Что делать с девкой... Надо поговорить с парнями', sound: null },
-    { name: '...', text: 'Неизвестный неспеша направился к спальне.', sound: null },
-    { name: '...', text: 'Куда дальше, срочно!.', sound: null }
+    { image: 'person_john',    name: '...', text: 'Джон пошел дальше и услышал шаги в гостинной', sound: null },
+    { image: 'person_john',    name: '...', text: 'Неизвестный осмотрел помещение, взглянул в окно', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестный', text: 'Ладно, у него вкус есть, вид что надо', sound: null },
+    { image: '',               name: '...', text: 'Наступает тишина. Не слышно ничего. Джон отчетливо начинает слышать свое сердцебиение', sound: null },
+    { image: 'person_john',    name: 'Джон', text: 'Думай, сука, думай', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестный', text: 'Что делать с девкой... Надо поговорить с парнями', sound: null },
+    { image: 'person_enemy_1', name: '...', text: 'Что делать с девкой... Надо поговорить с парнями', sound: null },
+    { image: 'person_enemy_1', name: '...', text: 'Неизвестный неспеша направился к спальне.', sound: null },
+    { image: 'person_john',    name: '...', text: 'Куда дальше, срочно!.', sound: null }
 ];
 
 /// общий коридор
 export class CommonRoomScene extends Phaser.Scene {
     constructor() {
-        super({key: 'common'});
+        super({key: 'common_scene'});
 
         console.log('state common room', this);
     }
@@ -131,6 +129,7 @@ export class CommonRoomScene extends Phaser.Scene {
             } else {
                 me.mng_dialogs.hideLastDialog();
                 me.input.keyboard.off('keydown-SPACE');
+                me.scene.start('bad_end_scene');
             }
         }, me);
     }
@@ -153,6 +152,7 @@ export class CommonRoomScene extends Phaser.Scene {
             } else {
                 me.mng_dialogs.hideLastDialog();
                 me.input.keyboard.off('keydown-SPACE');
+                me.scene.start('bad_end_scene');
             }
         }, me);
     }

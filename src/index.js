@@ -12,6 +12,7 @@ import {ChildrenScene} from "./scenes/children_scene";
 import {CabinetScene} from "./scenes/cabinet_scene";
 import {TechnicalroomScene} from "./scenes/technicalroom_scene";
 import {GuestBedroomScene} from "./scenes/guest_bedroom_scene";
+import {BadEndScene} from "./scenes/bad_end_scene";
 
 let scrmng= new ScreenManager();
 let unitmng= new UnitManager();
@@ -31,7 +32,8 @@ const config = {
         WardrobeScene,
         ChildrenScene,
         CabinetScene,
-        TechnicalroomScene
+        TechnicalroomScene,
+        BadEndScene
     ]
 };
 

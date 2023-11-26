@@ -120,6 +120,8 @@ export class GuestBedroomScene extends Phaser.Scene {
     }
 
     act_2_runs() {
+        let me = this;
+
         const dialogs_act_2_runs_base = [
             { name: 'Джон', text: 'Беги', sound: null },
             { name: '...', text: 'Джон укрывается за одним из диванов, Мередит спешит на террасу.', sound: null },
@@ -168,6 +170,29 @@ export class GuestBedroomScene extends Phaser.Scene {
             { name: '...', text: 'Он обернулся и подошел к мередит', sound: null },
         ];
 
+        me.btn_3.visible = false;
+        me.btn_4.visible = false;
+
+        me.mng_dialogs.destroy();
+        me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_act_2_runs_base.reverse()));
+
+        me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
+        me.input.keyboard.on('keydown-SPACE', () => {
+            if (me.mng_dialogs.isNextDialog()) {
+                me.mng_dialogs.nextDialog();
+                me.mng_dialogs.hidePrevDialogs();
+            }
+            else {
+                me.mng_dialogs.hideLastDialog();
+                me.input.keyboard.off('keydown-SPACE');
+                me.act_3_runs();
+            }
+        }, me);
+    }
+
+    act_3_runs() {
+        let me = this;
+
         const dialogs_act_2_runs_no_gun = [
             { name: 'Джон', text: 'БЕГИ!', sound: null },
             { name: '...', text: 'Мередит вырывается и пытается выхватить оружие у ближайшего парня.', sound: null },
@@ -175,16 +200,8 @@ export class GuestBedroomScene extends Phaser.Scene {
             { name: '...', text: 'Выстрел.', sound: null },
             { name: '...', text: 'Мередит падает, она абсолютно неподвижна.', sound: null },
             { name: '...', text: 'Джон застыл в шоке, он не может поверить своим глазам', sound: null },
-            { name: 'Неизвестный', text: 'Ее смерть на тебе. Мы потолкуем, приятель', sound: null },
-            { name: '...', text: 'Последнее, что чувствует Джон, это удар по голове.', sound: null },
-            { name: '...', text: 'Утром тела Мередит и Джона нашла вторая горничная, пришедшая на работу.\nНад ними сильно поиздевались.', sound: null },
-            { name: '...', text: 'Дом сильно поврежден.', sound: null },
-            { name: '...', text: 'Нападавшие арестованы.', sound: null },
-            { name: '...', text: 'Они долго отрицали свою вину.\nВ их анализах нашли множественные следы запрещенных веществ.\nТела Мередит и Джона были сильно изуродованы, над ними надругались.\nОдин лишь Бог знает что они пережили и были ли на момент издевательств еще в сознании.', sound: null },
-            { name: '...', text: 'Двое ребят оказались соучастниками, один - зачинщиком.\nМесяц назад он брал у Джона интервью, где Джон отпустил нелестные комментарии в сторону этого интервьюера, в последствии которого и вовсе уволили.\nПоиски работы не дали никакого толка, карьера была разрушена.\nОставалась только месть.', sound: null },
-            { name: 'Убийца', text: 'Я... Я и не думал, что дойдет до такого...\nЯ просто хотел поговорить. Помню мы подошли к дому, а потом...\nЯ не помню, не помню! Помню лишь как оказался в камере!', sound: null },
-            { name: '...', text: 'Бывшая жена Джона распродала все имущество покойного и переехала с дочкой в другую страну.', sound: null },
-            { name: '...', text: 'Мама Мередит узнала о смерти дочери лишь из новостей.\nПосле судебного разбирательства она навсегда ушла в себя.', sound: null },
+            { name: 'Неизвестный', text: 'Ее смерть на тебе. Мы потолкуем, при ятель', sound: null },
+            { name: '...', text: 'Последнее, что чувствует Джон, это удар по голове.', sound: null }
         ];
 
         const dialogs_act_2_runs_yes_gun = [
@@ -206,16 +223,10 @@ export class GuestBedroomScene extends Phaser.Scene {
             { name: '...', text: 'Двое опешивших парней переглядываются и садится на пол рядом с лежащим товарищем.\nДжон забирает пушки и подбегает к Мередит.', sound: null },
         ];
 
-        let me = this, dialogs_act_2_runs;
-
-        if (unitmng.getGun()) dialogs_act_2_runs = dialogs_act_2_runs_base.concat(dialogs_act_2_runs_yes_gun);
-        else                  dialogs_act_2_runs = dialogs_act_2_runs_base.concat(dialogs_act_2_runs_no_gun);
-
-        me.btn_3.visible = false;
-        me.btn_4.visible = false;
-
         me.mng_dialogs.destroy();
-        me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_act_2_runs.reverse()));
+
+        if (unitmng.getGun()) me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_act_2_runs_yes_gun.reverse()));
+        else                  me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_act_2_runs_no_gun.reverse()));
 
         me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
         me.input.keyboard.on('keydown-SPACE', () => {
@@ -226,8 +237,16 @@ export class GuestBedroomScene extends Phaser.Scene {
             else {
                 me.mng_dialogs.hideLastDialog();
                 me.input.keyboard.off('keydown-SPACE');
+                if (unitmng.getGun()) {
+
+                }
+                else {
+                    me.scene.start('bad_end_scene');
+                }
             }
         }, me);
+
+
     }
 
     act_2_hide() {
@@ -260,11 +279,34 @@ export class GuestBedroomScene extends Phaser.Scene {
             { name: '...', text: 'У неизвестного сделалось очень злое лицо и он сорвался на истеричный смех', sound: null },
             { name: 'Неизвестный', text: 'Ахахахаха! Конечно же! Зачем запоминать лица! Серая, серая масса!', sound: null },
             { name: 'Джон', text: 'Да что я тебе сделал?\nЕсли собрался со мной что-то делать,\nто хоть объясни что произошло!', sound: null },
-            { name: 'Третий неизвестный', text: 'Ты в этом виноват.\nМеня опозорил!\nЯ же был журналистом...\nСука, я ведь просто тебя подколол на интервью, тебе не понравилось...\nЯ не знаю кому ты позвонил и что сделал, но в этот же вечер меня уволили!\n', sound: null },
+            { name: 'Третий неизвестный', text: 'Ты в этом виноват.\nМеня опозорил!\nЯ же был журналистом...\nСука, я ведь просто тебя подколол на интервью, тебе не понравилось...\nЯ не знаю кому ты позвонил и что сделал, но в этот же вечер меня уволили!', sound: null },
             { name: 'Джон', text: 'Подожди-ка... Я ведь помню тебя, вроде. Все же решаемо!', sound: null },
             { name: 'Третий неизвестный', text: 'НЕТ! ТЫ ВО ВСЕМ ВИНОВАТ!', sound: null },
             { name: '...', text: 'Третий неизвестный начал крушить все вокруг.', sound: null },
         ];
+        let me = this;
+
+        me.btn_3.visible = false;
+        me.btn_4.visible = false;
+
+        me.mng_dialogs.destroy();
+        me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me, -400, 0, dialogs_act_2_hide_base.reverse()));
+
+        me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
+        me.input.keyboard.on('keydown-SPACE', () => {
+            if (me.mng_dialogs.isNextDialog()) {
+                me.mng_dialogs.nextDialog();
+                me.mng_dialogs.hidePrevDialogs();
+            } else {
+                me.mng_dialogs.hideLastDialog();
+                me.input.keyboard.off('keydown-SPACE');
+                me.act_3_hide()
+            }
+        }, me);
+    }
+
+    act_3_hide() {
+        let me = this;
 
         const dialogs_act_2_hide_no_gun = [
             { name: 'Мередит', text: 'БЕГИ!', sound: null },
@@ -274,14 +316,6 @@ export class GuestBedroomScene extends Phaser.Scene {
             { name: 'Мередит', text: 'НЕЕЕЕЕЕЕЕТ!', sound: null },
             { name: '...', text: 'Заткнись', sound: null },
             { name: '...', text: 'Последнее, что чувствует Мередит, это удар по голове', sound: null },
-            { name: '...', text: 'Утром тела Мередит и Джона нашла вторая горничная, пришедшая на работу.\nНад ними сильно поиздевались.', sound: null },
-            { name: '...', text: 'Дом сильно поврежден.', sound: null },
-            { name: '...', text: 'Нападавшие арестованы.', sound: null },
-            { name: '...', text: 'Они долго отрицали свою вину.\nВ их анализах нашли множественные следы запрещенных веществ.\nТела Мередит и Джона были сильно изуродованы, над ними надругались.\nОдин лишь Бог знает что они пережили и были ли на момент издевательств еще в сознании.', sound: null },
-            { name: '...', text: 'Двое ребят оказались соучастниками, один - зачинщиком.\nМесяц назад он брал у Джона интервью, где Джон отпустил нелестные комментарии в сторону этого интервьюера, в последствии которого и вовсе уволили.\nПоиски работы не дали никакого толка, карьера была разрушена.\nОставалась только месть.', sound: null },
-            { name: 'Убийца', text: 'Я... Я и не думал, что дойдет до такого...\nЯ просто хотел поговорить. Помню мы подошли к дому, а потом...\nЯ не помню, не помню! Помню лишь как оказался в камере!', sound: null },
-            { name: '...', text: 'Бывшая жена Джона распродала все имущество покойного и переехала с дочкой в другую страну.', sound: null },
-            { name: '...', text: 'Мама Мередит узнала о смерти дочери лишь из новостей.\nПосле судебного разбирательства она навсегда ушла в себя.', sound: null },
         ];
 
         const dialogs_act_2_hide_yes_gun = [
@@ -305,6 +339,27 @@ export class GuestBedroomScene extends Phaser.Scene {
             { name: '...', text: 'Двое опешивших парней переглядываются и садятся на пол рядом с лежащим товарищем.', sound: null },
             { name: '...', text: 'Джон забирает пушки и подбегает к Мередит.', sound: null },
         ];
+
+        me.mng_dialogs.destroy();
+        if (unitmng.getGun()) me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me, -400, 0, dialogs_act_2_hide_yes_gun.reverse()));
+        else                  me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me, -400, 0, dialogs_act_2_hide_no_gun.reverse()));
+
+        me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
+        me.input.keyboard.on('keydown-SPACE', () => {
+            if (me.mng_dialogs.isNextDialog()) {
+                me.mng_dialogs.nextDialog();
+                me.mng_dialogs.hidePrevDialogs();
+            } else {
+                me.mng_dialogs.hideLastDialog();
+                me.input.keyboard.off('keydown-SPACE');
+                if (unitmng.getGun()) me.act_4_hide();
+                else                  me.scene.start('bad_end_scene');
+            }
+        }, me);
+    }
+
+    act_4_hide() {
+        let me = this;
 
         const dialogs_act_2_hide_yes_bandage = [
             { name: '...', text: 'Джон достает бинт и начинает перевязывать рану, утягивая будто жгутом, чтобы остановить кровотечение.', sound: null },
@@ -377,27 +432,16 @@ export class GuestBedroomScene extends Phaser.Scene {
             { name: '...', text: 'Она не простила Джона, а Джон, вероятно, не сможет простить себя.', sound: null },
         ];
 
-        let me = this, dialogs_act_2_hide, dialogs_act_2_hide_final;
-
-        if (unitmng.getGun()) dialogs_act_2_hide = dialogs_act_2_hide_base.concat(dialogs_act_2_hide_yes_gun);
-        else                  dialogs_act_2_hide = dialogs_act_2_hide_base.concat(dialogs_act_2_hide_no_gun);
-
-        if (unitmng.getHealth()) dialogs_act_2_hide_final.concat(dialogs_act_2_hide_yes_bandage);
-        else                     dialogs_act_2_hide_final.concat(dialogs_act_2_hide_no_bandage);
-
-        me.btn_3.visible = false;
-        me.btn_4.visible = false;
-
         me.mng_dialogs.destroy();
-        me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me,-400, 0, dialogs_act_2_hide_final.reverse()));
+        if (unitmng.getHealth()) me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me, -400, 0, dialogs_act_2_hide_yes_bandage.reverse()));
+        else                  me.roomContainer.add(me.mng_dialogs = new Dialogs_Manager(me, -400, 0, dialogs_act_2_hide_no_bandage.reverse()));
 
         me.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE, true);
         me.input.keyboard.on('keydown-SPACE', () => {
             if (me.mng_dialogs.isNextDialog()) {
                 me.mng_dialogs.nextDialog();
                 me.mng_dialogs.hidePrevDialogs();
-            }
-            else {
+            } else {
                 me.mng_dialogs.hideLastDialog();
                 me.input.keyboard.off('keydown-SPACE');
             }

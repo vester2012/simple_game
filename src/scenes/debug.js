@@ -19,12 +19,12 @@ export class DebugScene extends Phaser.Scene {
 
         me.buttons = [];
 
-        me.debugContainer.add(me.corridor1Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('common'), me));
+        me.debugContainer.add(me.corridor1Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('common_scene'), me));
         me.corridor1Btn.addLabel(0, 0, 'common room');
         me.buttons.push(me.corridor1Btn);
 
-        me.debugContainer.add(me.corridor2Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('corridor_2'), me));
-        me.corridor2Btn.addLabel(0, 0, 'corridor 2');
+        me.debugContainer.add(me.corridor2Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('corridor_scene'), me));
+        me.corridor2Btn.addLabel(0, 0, 'corridor');
         me.buttons.push(me.corridor2Btn);
 
         me.debugContainer.add(me.corridor3Btn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('technicalroom'), me));
@@ -59,13 +59,23 @@ export class DebugScene extends Phaser.Scene {
         me.writerBtn.addLabel(0, 0, 'writers room');
         me.buttons.push(me.writerBtn);
 
+        me.debugContainer.add(me.writerBtn = new Button(me, 0, 0, 'button_menu', null, () => me.scene.start('bad_end_scene'), me));
+        me.writerBtn.addLabel(0, 0, 'bad end scene');
+        me.buttons.push(me.writerBtn);
+
         me.buttons.forEach((button, id) => {
+            button.image.scaleX = 0.6;
             if (id < 5) {
                 button.x = -300;
                 button.y = id * 80;
             } else {
-                button.x = 100;
+                button.x = 0;
                 button.y = (id - 5) * 80;
+
+                if (id > 9) {
+                    button.x = 300;
+                    button.y = (id - 10) * 80;
+                }
             }
         });
     }

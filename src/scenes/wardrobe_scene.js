@@ -5,8 +5,8 @@ import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs = [
     { name: '...', text: 'Джон заходит в гардероб', sound: null },
-    { name: 'Джон', text: 'Нужно осмотреть помещение', sound: null },
-    { name: '...', text: 'Джон ничего не находит и выходит из комнаты', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'Нужно осмотреть помещение', sound: null },
+    { image: 'person_john', name: '...', text: 'Джон ничего не находит и выходит из комнаты', sound: null },
 ]
 
 export class WardrobeScene extends Phaser.Scene {

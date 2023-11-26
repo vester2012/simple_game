@@ -4,26 +4,26 @@ import {Button} from "../controls";
 import {Dialogs_Manager} from "../core/dialogs_manager";
 
 const dialogs = [
-    { name: 'Неизвестный', text: 'АХАХАХАХХАХА', sound: 'testsnd' },
-    { name: 'Джон', text: 'Ах, можно потише, голова раскалывается', sound: null },
-    { name: 'Неизвестный', text: 'О, ты это видел? Просто чума', sound: 'snd_crash_glass' },
-    { name: 'Другой неизвестный', text: 'Ой', sound: null },
-    { name: 'Неизвестный', text: 'Да забей, этот хмырь себе новый купит. О, а это зацени!', sound: 'snd_slap' },
-    { name: 'Неизвестные', text: 'Ахахахаа!', sound: 'snd_laughter' },
-    { name: '...', text: 'Писатель нехотя открыл глаза. \n' + 'Голова трещит от похмелья, но этот шум явно не глюки от выпитого пойла.\n' + 'Жарко, очень жарко. \n' + 'Рука потянулась к пульту от кондиционера.\n', sound: null },
-    { name: 'Джон', text: '"Что за...? Почему нет света?\n' + 'С трудом встав с кровати Джон проверяет карманы.\n' + 'Халат слегка влажный, телефона нигде нет. \n' + 'Пьянчужка вспоминает о том, как упал в бассейн.\n', sound: null },
-    { name: 'Джон', text: 'Мда, я не удивлен... Дорого мне обходятся мои заплывы', sound: null },
-    { name: 'Неизвестные', text: 'Джооон, где же ты?', sound: null },
-    { name: 'Неизвестные', text: 'Да, приятель, где ты? Ой, а что это?', sound: 'snd_hit' },
-    { name: 'Неизвестные', text: 'Одной хреновиной меньше, ахахах!\n' + 'Ой, а там мы еще не были! Может найдем какую из незаслуженных наград маестро!', sound: 'snd_hit_door' },
-    { name: '...', text: 'Джон слегка приходит в себя.\n' + 'Звук не особо дальний, скорее всего они в соседней комнате.\n' + 'Взглянув в дверную щель он видит, что дверь в детскую распахнута.\n', sound: null },
-    { name: 'Джон', text: 'Сукины дети, вы у меня поплатитесь"\n' + 'Теряя равновесие сказал писатель, но смог устоять.\n' + 'Ладно, кое что для вас у меня точно найдется.\nГде я припрятал чертов пистолет??! Надо бы его найти…', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестный', text: 'АХАХАХАХХАХА', sound: 'testsnd' },
+    { image: 'person_john',    name: 'Джон', text: 'Ах, можно потише, голова раскалывается', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестный', text: 'О, ты это видел? Просто чума', sound: 'snd_crash_glass' },
+    { image: 'person_enemy_2', name: 'Другой неизвестный', text: 'Ой', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестный', text: 'Да забей, этот хмырь себе новый купит. О, а это зацени!', sound: 'snd_slap' },
+    { image: 'person_enemy_3', name: 'Неизвестные', text: 'Ахахахаа!', sound: 'snd_laughter' },
+    { image: 'person_enemy_2', name: '...', text: 'Писатель нехотя открыл глаза. \n' + 'Голова трещит от похмелья, но этот шум явно не глюки от выпитого пойла.\n' + 'Жарко, очень жарко. \n' + 'Рука потянулась к пульту от кондиционера.\n', sound: null },
+    { image: 'person_john', name: 'Джон', text: '"Что за...? Почему нет света?\n' + 'С трудом встав с кровати Джон проверяет карманы.\n' + 'Халат слегка влажный, телефона нигде нет. \n' + 'Пьянчужка вспоминает о том, как упал в бассейн.\n', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'Мда, я не удивлен... Дорого мне обходятся мои заплывы', sound: null },
+    { image: 'person_enemy_1', name: 'Неизвестные', text: 'Джооон, где же ты?', sound: null },
+    { image: 'person_enemy_2', name: 'Неизвестные', text: 'Да, приятель, где ты? Ой, а что это?', sound: 'snd_hit' },
+    { image: 'person_enemy_3', name: 'Неизвестные', text: 'Одной хреновиной меньше, ахахах!\n' + 'Ой, а там мы еще не были! Может найдем какую из незаслуженных наград маестро!', sound: 'snd_hit_door' },
+    { image: 'person_john', name: '...', text: 'Джон слегка приходит в себя.\n' + 'Звук не особо дальний, скорее всего они в соседней комнате.\n' + 'Взглянув в дверную щель он видит, что дверь в детскую распахнута.\n', sound: null },
+    { image: 'person_john', name: 'Джон', text: 'Сукины дети, вы у меня поплатитесь"\n' + 'Теряя равновесие сказал писатель, но смог устоять.\n' + 'Ладно, кое что для вас у меня точно найдется.\nГде я припрятал чертов пистолет??! Надо бы его найти…', sound: null },
 ]
 
 const nextScenes = [
     { name: 'Ванная', nameScene: 'bathroom'},
     { name: 'Кабинет', nameScene: 'writersroom'},
-    { name: 'Коридор', nameScene: 'corridor_2'},
+    { name: 'Коридор', nameScene: 'corridor_scene'},
     { name: 'Гардероб', nameScene: 'wardrobe'}
 ]
 
@@ -61,10 +61,13 @@ export class StartScene extends Phaser.Scene {
                 me.input.keyboard.off('keydown-SPACE');
                 nextScenes.forEach((state, id) => {
                     let tmp;
-                    me.roomContainer.add(tmp = new Button(me, 0, 100 * id, 'button_menu', null, () => me.scene.start(state.nameScene), me));
+                    me.roomContainer.add(tmp = new Button(me, 0, 100 * id, 'button_menu', null, () => {
+                        me.cameras.main.fadeOut(1000);
+                        me.time.delayedCall(1000, () => me.scene.start(state.nameScene));
+
+                    }, me));
                     tmp.addLabel(0, 0, state.name);
                     tmp.setScale(0).setAlpha(0);
-
                     me.tweens.add({ targets: tmp, alpha: 1, scale: 1, duration: 300, delay: id * 50 });
                 })
             }
