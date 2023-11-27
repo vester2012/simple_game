@@ -5,7 +5,6 @@ import menu_back from "../assets/menu_back.jpg";
 
 import back_common from "../assets/rooms/corridor/common_back.jpg";
 import back_corridor_2 from "../assets/rooms/corridor/corridor_back_2.jpg";
-import back_corridor_3 from "../assets/rooms/corridor/corridor_back_3.jpg";
 
 import back_guest_bedroom from "../assets/rooms/guest_bedroom_back.jpg"
 import back_bedroom from "../assets/rooms/bedroom_back.jpg";
@@ -45,7 +44,6 @@ export class LoadingScene extends Phaser.Scene {
         this.load.image('button_exit',        button_exit);
         this.load.image('common_back',        back_common);
         this.load.image('corridor_back_2',    back_corridor_2);
-        this.load.image('corridor_back_3',    back_corridor_3);
         this.load.image('guest_bedroom_back', back_guest_bedroom);
         this.load.image('bedroom_back',       back_bedroom);
         this.load.image('bathroom_back',      back_bathroom);
