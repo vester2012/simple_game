@@ -33,7 +33,7 @@ export class MenuScene extends Phaser.Scene {
         me.menuContainer = me.add.container(scrmng.getCenterX(), scrmng.getCenterY());
         me.menuContainer.add(me.back = me.add.image(0, 0, 'menu_back').setScale(0.5));
 
-        me.menuContainer.add(me.inventary = new Inventary(me, 0, 0));
+        //me.menuContainer.add(me.inventary = new Inventary(me, 0, 0));
 
         me.buttons = [];
 
@@ -53,10 +53,10 @@ export class MenuScene extends Phaser.Scene {
         me.aboutBtn.addLabel(0, 0, 'About');
         me.buttons.push(me.aboutBtn);
 
-        me.menuContainer.add(me.inventaryBtn = new Button(me, 100, -200, 'button_menu', null, () => {
+        /*me.menuContainer.add(me.inventaryBtn = new Button(me, 100, -200, 'button_menu', null, () => {
             me.inventary.open();
         }, me));
-        me.inventaryBtn.addLabel(0, 0, 'Inventary');
+        me.inventaryBtn.addLabel(0, 0, 'Inventary');*/
     }
 
     gameTransition() {
